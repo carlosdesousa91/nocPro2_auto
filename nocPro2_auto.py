@@ -9,7 +9,7 @@ import json
 import nocPro_access
 import traceback
 from _class import topdesk_class
-from ../nocPro import nocPro_mail
+import nocPro_mail
 import datetime
 
 try:
