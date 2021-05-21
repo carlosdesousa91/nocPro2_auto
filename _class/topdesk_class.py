@@ -137,3 +137,5 @@ def cria_ticket(
         data_json = response.json()
     
     s.close()
+
+    return data_json
