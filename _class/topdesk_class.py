@@ -61,7 +61,7 @@ def cria_ticket(
     user_centreon, 
     userEmail_centreon, 
     hora_evento_centreon, 
-    email_cliente,
+    #email_cliente,
     service_id_centreon, 
     servico_otrs, 
     ic_local_uf, 

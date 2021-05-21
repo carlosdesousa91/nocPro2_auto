@@ -39,7 +39,7 @@ try:
     #não tem ticket e é uma falha
     if ticket_existente == 0 and service_status_centreon != "UP" and service_status_centreon != "OK":
         # criar ticket
-        TicketAberto_value = topdesk_class.cria_ticket(nocPro_access.rule_data, service_desc_centreon, service_status_centreon,hora_eventoEp_start, hora_eventoEp_centreon, host_name_centreon, user_centreon, userEmail_centreon, hora_evento_centreon, email_cliente,service_id_centreon, servico_otrs, ic_local_uf, conexao_centreon, params)
+        TicketAberto_value = topdesk_class.cria_ticket(nocPro_access.rule_data, service_desc_centreon, service_status_centreon,hora_eventoEp_start, hora_eventoEp_centreon, host_name_centreon, user_centreon, userEmail_centreon, hora_evento_centreon,service_id_centreon, servico_otrs, ic_local_uf, conexao_centreon, params)
         erro_valor = "não houve erro, ticket foi aberto."  + TicketAberto_value
 
     #não tem ticket e é uma normalização
