@@ -52,8 +52,7 @@ try:
             service_id_centreon,
             servico_otrs,
             #ic_local_uf,
-            conexao_centreon,
-            params
+            conexao_centreon
         )
         erro_valor = "não houve erro, ticket foi aberto."  + TicketAberto_value
 
