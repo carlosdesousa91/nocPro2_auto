@@ -64,7 +64,7 @@ def cria_ticket(
     #email_cliente,
     service_id_centreon, 
     servico_otrs, 
-    ic_local_uf, 
+    #ic_local_uf, 
     conexao_centreon,
     service_note_centreon
     ):
