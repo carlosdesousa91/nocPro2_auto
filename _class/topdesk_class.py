@@ -33,11 +33,12 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         authorization = "Basic " + str(authorization)
                 
         response = s.get(base_url, headers={'content-type': 'application/json', 'Authorization': authorization}, verify=False, stream=False)
-        data_json = response.json()
+        
     
     s.close()
 
-    if data_json:
+    if response.json():
+        data_json = response.json()
         return data_json[0]['id'], data_json[0]['number']
     else:
         return 0
