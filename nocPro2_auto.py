@@ -55,7 +55,7 @@ try:
             conexao_centreon,
             service_note_centreon
         )
-        erro_valor = "não houve erro, ticket foi aberto."  + TicketAberto_value
+        erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
 
     #não tem ticket e é uma normalização
     elif ticket_existente == 0 and (service_status_centreon == "UP" or service_status_centreon == "OK"):
