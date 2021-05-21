@@ -21,7 +21,7 @@ try:
     servico_otrs = sys.argv[3]
     service_id_centreon = sys.argv[4]
     hora_evento_centreon = sys.argv[5]
-    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%d %H:%M:%S')
+    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S')
     service_status_centreon = sys.argv[6]
     service_desc_centreon = sys.argv[7]
     service_nome_centreon = sys.argv[8]
@@ -39,7 +39,8 @@ try:
     #não tem ticket e é uma falha
     if ticket_existente == 0 and service_status_centreon != "UP" and service_status_centreon != "OK":
         # criar ticket
-        erro_valor = "não houve erro, ticket foi aberto."
+        TicketAberto_value = topdesk_class.cria_ticket(rule_data, service_desc_centreon, service_status_centreon,hora_eventoEp_start, hora_eventoEp_centreon, host_name_centreon, user_centreon, userEmail_centreon, hora_evento_centreon, email_cliente,service_id_centreon, servico_otrs, ic_local_uf, conexao_centreon, params)
+        erro_valor = "não houve erro, ticket foi aberto."  + TicketAberto_value
 
     #não tem ticket e é uma normalização
     elif ticket_existente == 0 and (service_status_centreon == "UP" or service_status_centreon == "OK"):
