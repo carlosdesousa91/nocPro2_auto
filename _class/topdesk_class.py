@@ -33,7 +33,6 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         authorization = "Basic " + str(authorization)
                 
         response = s.get(base_url, headers={'content-type': 'application/json', 'Authorization': authorization}, verify=False, stream=False)
-        
     
     s.close()
 
