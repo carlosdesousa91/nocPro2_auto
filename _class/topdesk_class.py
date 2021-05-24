@@ -176,7 +176,7 @@ def camposTicket(
 
 
 def consultaAtivo(rule_data, service_note_centreon):
-     with requests.Session() as s:
+    with requests.Session() as s:
         base_url = 'https://'
         base_url += rule_data['address']
         base_url += rule_data['path'] + '/api'
@@ -192,7 +192,6 @@ def consultaAtivo(rule_data, service_note_centreon):
                 
         response = s.get(base_url, headers={'content-type': 'application/json', 'Authorization': authorization}, verify=False, stream=False)
         #data_json = response.json()
-    
     s.close()
 
     return response['dataSet']
