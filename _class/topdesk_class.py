@@ -191,7 +191,7 @@ def consultaAtivo(rule_data, service_note_centreon):
         authorization = "Basic " + str(authorization)
                 
         response = s.get(base_url, headers={'content-type': 'application/json', 'Authorization': authorization}, verify=False, stream=False)
-        #data_json = response.json()
+        data_json = response.json()
     s.close()
 
-    return response['dataSet']
+    return data_json['dataSet']
