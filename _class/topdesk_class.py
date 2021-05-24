@@ -90,39 +90,40 @@ def cria_ticket(
             'request': service_desc_centreon,
             'briefDescription': service_desc_centreon,
             'callerLookup': {
-                'email': 'carlos.sousa.adm@terceiro.rnp.br'
+                'email': 'carlos.sousa@terceiro.rnp.br'
             },
             #o campo type refere-se ao tipo de chamado, incidente, requisição, etc. No contexto do nocpro ele será usada para outro fim e todos os chamado serão do tipo Incidente
-            'callType': [
-                {'name': 'Incidente'}
-            ],
-            'category': [
-                {'id': '989624e9-4b7f-4bef-ab65-aa6135d52299'}
-            ],
-            'subcategory': [
+            'callType': {
+                'name': 'Incidente'
+            },
+            'category': {
+                'id': '989624e9-4b7f-4bef-ab65-aa6135d52299'
+                
+            },
+            'subcategory': 
                 {'id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466'}
-            ],
-            'object': [
+            ,
+            'object': 
                 {'name': service_note_centreon}
-            ],
-            'sla': [
+            ,
+            'sla': 
                 {'id': 'cf6b5764-649e-49b9-abee-5277f1b84c3f'}
-            ],
-            'operator': [
+            ,
+            'operator': 
                 {'id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176'}
-            ],
-            'operatorGroup': [
+            ,
+            'operatorGroup': 
                 {'id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176'}
-            ],
-            'processingStatus': [
+            ,
+            'processingStatus': 
                 {'id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69'}
-            ],
-            'optionalFields1': [
+            ,
+            'optionalFields1': 
                 {'date1': hora_evento_centreon}
-            ],
-            'entryType': [
+            ,
+            'entryType': 
                 {'name': 'Monitoramento'}
-            ]
+            
 
         }
                 
