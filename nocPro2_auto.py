@@ -39,7 +39,14 @@ try:
     #não tem ticket e é uma falha
     if ticket_existente == 0 and service_status_centreon != "UP" and service_status_centreon != "OK":
         #buscar campos para abertura do ticket
-        campos = topdesk_class.camposTicket(service_note_centreon,service_desc_centreon, user_centreon, userEmail_centreon, hora_evento_centreon)
+        campos = topdesk_class.camposTicket(
+            service_status_centreon,
+            service_note_centreon,
+            service_desc_centreon,
+            user_centreon,
+            userEmail_centreon,
+            hora_evento_centreon
+        )
         # criar ticket
         TicketAberto_value = topdesk_class.cria_ticket(
             nocPro_access.rule_data,

@@ -142,7 +142,14 @@ def cria_ticket(
     return data_json
 
 
-def camposTicket(service_note_centreon,service_desc_centreon, user_centreon, userEmail_centreon, hora_evento_centreon):
+def camposTicket(
+        service_status_centreon,
+        service_note_centreon,
+        service_desc_centreon,
+        user_centreon,
+        userEmail_centreon,
+        hora_evento_centreon
+    ):
     campos = {
         'email_cliente': 'carlos.sousa@terceiro.rnp.br',
         'request': """Prezados,<br/><br/> O <b>""" + service_note_centreon + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
