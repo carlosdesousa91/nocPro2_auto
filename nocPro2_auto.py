@@ -40,7 +40,7 @@ try:
     if ticket_existente == 0 and service_status_centreon != "UP" and service_status_centreon != "OK":
         #buscar campos para abertura do ticket
         campos = topdesk_class.camposTicket(
-            rule_data,
+            nocPro_access.rule_data,
             service_status_centreon,
             service_note_centreon,
             service_desc_centreon,
