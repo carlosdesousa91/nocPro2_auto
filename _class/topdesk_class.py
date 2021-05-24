@@ -144,12 +144,12 @@ def cria_ticket(
 
 def camposTicket(service_note_centreon,service_desc_centreon, user_centreon, userEmail_centreon, hora_evento_centreon):
     campos = {
-        'email_cliente': '',
+        'email_cliente': 'carlos.sousa@terceiro.rnp.br',
         'request': """Prezados,<br/><br/> O <b>""" + service_note_centreon + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
         service_desc_centreon + "<br/>status:" + service_status_centreon +
         """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
         """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
-        'briefDescription': 'Abertura - Isolamento - ' + service_note_centreon,
+        'briefDescription': '[teste]Abertura - Isolamento - ' + service_note_centreon,
         'category_id': '989624e9-4b7f-4bef-ab65-aa6135d52299',
         'subcategory_id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466',
         'object_name': service_note_centreon,
