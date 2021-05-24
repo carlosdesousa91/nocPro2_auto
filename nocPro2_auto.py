@@ -40,6 +40,7 @@ try:
     if ticket_existente == 0 and service_status_centreon != "UP" and service_status_centreon != "OK":
         #buscar campos para abertura do ticket
         campos = topdesk_class.camposTicket(
+            rule_data,
             service_status_centreon,
             service_note_centreon,
             service_desc_centreon,
@@ -50,21 +51,21 @@ try:
         # criar ticket
         TicketAberto_value = topdesk_class.cria_ticket(
             nocPro_access.rule_data,
-            campos,
-            service_desc_centreon,
-            service_status_centreon,
-            hora_eventoEp_start,
-            hora_eventoEp_centreon,
-            host_name_centreon,
-            user_centreon,
-            userEmail_centreon,
-            hora_evento_centreon,
+            campos
+            #service_desc_centreon,
+            #service_status_centreon,
+            #hora_eventoEp_start,
+            #hora_eventoEp_centreon,
+            #host_name_centreon,
+            #user_centreon,
+            #userEmail_centreon,
+            #hora_evento_centreon,
             #email_cliente,
-            service_id_centreon,
-            servico_otrs,
+            #service_id_centreon,
+            #servico_otrs,
             #ic_local_uf,
-            conexao_centreon,
-            service_note_centreon
+            #conexao_centreon,
+            #service_note_centreon
         )
 
         erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)

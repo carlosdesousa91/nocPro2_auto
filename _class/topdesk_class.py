@@ -53,21 +53,21 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
 
 def cria_ticket(
     rule_data,
-    campos,
-    service_desc_centreon, 
-    service_status_centreon,
-    hora_eventoEp_start, 
-    hora_eventoEp_centreon, 
-    host_name_centreon, 
-    user_centreon, 
-    userEmail_centreon, 
-    hora_evento_centreon, 
+    campos
+    #service_desc_centreon, 
+    #service_status_centreon,
+    #hora_eventoEp_start, 
+    #hora_eventoEp_centreon, 
+    #host_name_centreon, 
+    #user_centreon, 
+    #userEmail_centreon, 
+    #hora_evento_centreon, 
     #email_cliente,
-    service_id_centreon, 
-    servico_otrs, 
+    #service_id_centreon, 
+    #servico_otrs, 
     #ic_local_uf, 
-    conexao_centreon,
-    service_note_centreon
+    #conexao_centreon,
+    #service_note_centreon
     ):
 
     with requests.Session() as s:
@@ -143,6 +143,7 @@ def cria_ticket(
 
 
 def camposTicket(
+        rule_data,
         service_status_centreon,
         service_note_centreon,
         service_desc_centreon,
@@ -150,17 +151,21 @@ def camposTicket(
         userEmail_centreon,
         hora_evento_centreon
     ):
+
+    specification = consultaAtivo(rule_data, service_note_centreon)
+    specification = specification['specification']
+
     campos = {
         'email_cliente': 'carlos.sousa@terceiro.rnp.br',
-        'request': """Prezados,<br/><br/> O <b>""" + service_note_centreon + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
+        'request': """Prezados,<br/><br/> O <b>""" + specification + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
         service_desc_centreon + "<br/>status:" + service_status_centreon +
         """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
         """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
-        'briefDescription': '[teste]Abertura - Isolamento - ' + service_note_centreon,
+        'briefDescription': '[teste]Abertura - Isolamento - ' + specification,
         'category_id': '989624e9-4b7f-4bef-ab65-aa6135d52299',
         'subcategory_id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466',
         'object_name': service_note_centreon,
-        'sla_id': 'cf6b5764-649e-49b9-abee-5277f1b84c3f',
+        'sla_id': 'd5940571-9b7d-4fc7-aec5-9c5a0475c2be',
         'operator_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
         'operatorgroup_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
         'processingStatus_id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69',
@@ -168,3 +173,26 @@ def camposTicket(
     }
 
     return campos
+
+
+def consultaAtivo(rule_data, service_note_centreon):
+     with requests.Session() as s:
+        base_url = 'https://'
+        base_url += rule_data['address']
+        base_url += rule_data['path'] + '/api'
+        base_url += "/assetmgmt/assets?fields=specification,name&$filter=name eq '" + service_note_centreon + "'"
+        
+        api_user = rule_data['username']
+        api_senha = rule_data['password']
+        data_string = api_user + ":" + api_senha
+        authorization = data_string.encode("utf-8")
+        authorization = base64.b64encode(authorization)
+        authorization = authorization.decode("utf-8")
+        authorization = "Basic " + str(authorization)
+                
+        response = s.get(base_url, headers={'content-type': 'application/json', 'Authorization': authorization}, verify=False, stream=False)
+        #data_json = response.json()
+    
+    s.close()
+
+    return response['dataSet']
