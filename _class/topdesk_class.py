@@ -153,7 +153,7 @@ def camposTicket(
     ):
 
     specification = consultaAtivo(rule_data, service_note_centreon)
-    specification = specification['specification']
+    specification = specification[0]['specification']
 
     campos = {
         'email_cliente': 'carlos.sousa@terceiro.rnp.br',
