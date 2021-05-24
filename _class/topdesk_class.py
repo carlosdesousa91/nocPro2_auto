@@ -89,9 +89,9 @@ def cria_ticket(
 
             'request': service_desc_centreon,
             'briefDescription': service_desc_centreon,
-            'callerLookup': [
-                {'email': 'carlos.sousa.adm@terceiro.rnp.br'}
-            ],
+            'callerLookup': {
+                'email': 'carlos.sousa.adm@terceiro.rnp.br'
+            },
             #o campo type refere-se ao tipo de chamado, incidente, requisição, etc. No contexto do nocpro ele será usada para outro fim e todos os chamado serão do tipo Incidente
             'callType': [
                 {'name': 'Incidente'}
