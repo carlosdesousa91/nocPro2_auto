@@ -52,7 +52,8 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
 
 
 def cria_ticket(
-    rule_data, 
+    rule_data,
+    campos,
     service_desc_centreon, 
     service_status_centreon,
     hora_eventoEp_start, 
@@ -87,43 +88,42 @@ def cria_ticket(
 
         ticket_create_json = {
 
-            'request': service_desc_centreon,
-            'briefDescription': service_desc_centreon,
+            'request': campos['request'],
+            'briefDescription': campos['briefDescription'],
             'callerLookup': {
-                'email': 'carlos.sousa@terceiro.rnp.br'
+                'email': campos['email_cliente']
             },
             #o campo type refere-se ao tipo de chamado, incidente, requisição, etc. No contexto do nocpro ele será usada para outro fim e todos os chamado serão do tipo Incidente
             'callType': {
                 'name': 'Incidente'
             },
             'category': {
-                'id': '989624e9-4b7f-4bef-ab65-aa6135d52299'
+                'id': campos['category_id']
                 
             },
             'subcategory': 
-                {'id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466'}
+                {'id': campos['subcategory_id']}
             ,
             'object': 
-                {'name': service_note_centreon}
+                {'name': campos['object_name']}
             ,
             'sla': 
-                {'id': 'cf6b5764-649e-49b9-abee-5277f1b84c3f'}
+                {'id': campos['sla_id']}
             ,
             'operator': 
-                {'id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176'}
+                {'id': campos['operator_id']}
             ,
             'operatorGroup': 
-                {'id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176'}
+                {'id': campos['operatorgroup_id']}
             ,
             'processingStatus': 
-                {'id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69'}
+                {'id': campos['processingStatus_id']}
             ,
             'optionalFields1': 
-                {'date1': hora_evento_centreon}
+                {'date1': campos['hora_falha']}
             ,
             'entryType': 
-                {'name': 'Monitoramento'}
-            
+                {'name': 'Monitoramento'}            
 
         }
                 
@@ -140,3 +140,24 @@ def cria_ticket(
     s.close()
 
     return data_json
+
+
+def camposTicket(service_note_centreon,service_desc_centreon, user_centreon, userEmail_centreon, hora_evento_centreon):
+    campos = {
+        'email_cliente': '',
+        'request': """Prezados,<br/><br/> O <b>""" + service_note_centreon + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
+        service_desc_centreon + "<br/>status:" + service_status_centreon +
+        """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
+        """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
+        'briefDescription': 'Abertura - Isolamento - ' + service_note_centreon,
+        'category_id': '989624e9-4b7f-4bef-ab65-aa6135d52299',
+        'subcategory_id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466',
+        'object_name': service_note_centreon,
+        'sla_id': 'cf6b5764-649e-49b9-abee-5277f1b84c3f',
+        'operator_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
+        'operatorgroup_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
+        'processingStatus_id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69',
+        'hora_falha': hora_evento_centreon
+    }
+
+    return campos
