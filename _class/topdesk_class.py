@@ -241,8 +241,8 @@ def normalizacao_ticket(
             stream=False
         )
 
-        data_json = response.json()
+        #data_json = response.json()
     
     s.close()
 
-    return data_json
+    return 1
