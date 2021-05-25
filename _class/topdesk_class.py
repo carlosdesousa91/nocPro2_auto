@@ -227,13 +227,14 @@ def normalizacao_ticket(
                 {'id': campos['processingStatus_id']}
             ,
             'optionalFields1': 
-                {'date2': campos['hora_normaliza']},
+                {'date2': campos['hora_normaliza']}
+            ,
             'action': """Prezados,<br/><br/> O ativo encontra-se normalizado:<br/> Host disponível: """ + service_desc_centreon + 
-            """<br/>status:""" + service_status_centreon      
+            """<br/>status:""" + service_status_centreon    
 
         }
                 
-        response = s.post(
+        response = s.put(
             base_url, 
             headers={'content-type': 'application/json', 'Authorization': authorization}, 
             data=json.dumps(ticket_create_json),
@@ -241,8 +242,8 @@ def normalizacao_ticket(
             stream=False
         )
 
-        #data_json = response.json()
+        data_json = response.json()
     
     s.close()
 
-    return 1
+    return data_json
