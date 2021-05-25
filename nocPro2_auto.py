@@ -83,7 +83,13 @@ try:
     #tem ticket e é uma normalização
     else:    
         #fecha o ticket
-        erro_valor = "não houve erro, ticket foi finalizado. " + str(ticket_existente[0])
+        #aguardando fornecedor dc36014f-d7c2-4f84-a23f-129ed93ee5d5
+        topdesk_class.normalizacao_ticket(
+            nocPro_access.rule_data,
+            {'hora_normaliza': hora_evento_centreon, 'processingStatus_id': 'dc36014f-d7c2-4f84-a23f-129ed93ee5d5'},
+            ticket_existente[0]
+        )
+        erro_valor = "não houve erro, ticket normalização foi atualizada. " + str(ticket_existente[0])
 
 
     ##envia email

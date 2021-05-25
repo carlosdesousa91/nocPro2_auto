@@ -195,3 +195,51 @@ def consultaAtivo(rule_data, service_note_centreon):
     s.close()
 
     return data_json['dataSet']
+
+
+def normalizacao_ticket(
+    rule_data,
+    campos,
+    ticket_id
+    ):
+
+    with requests.Session() as s:
+    #s.get('https://httpbin.org/cookies/set/sessioncookie/123456789')
+        
+        base_url = 'https://'
+        base_url += rule_data['address']
+        base_url += rule_data['path'] + '/api';
+        base_url += '/incidents/id/' + ticket_id
+        
+        api_user = rule_data['username']
+        api_senha = rule_data['password']
+        data_string = api_user + ":" + api_senha
+        authorization = data_string.encode("utf-8")
+        authorization = base64.b64encode(authorization)
+        authorization = authorization.decode("utf-8")
+        authorization = "Basic " + str(authorization)
+
+        ticket_create_json = {
+
+            'processingStatus': 
+                {'id': campos['processingStatus_id']}
+            ,
+            'optionalFields1': 
+                {'date2': campos['hora_normaliza']}
+                      
+
+        }
+                
+        response = s.post(
+            base_url, 
+            headers={'content-type': 'application/json', 'Authorization': authorization}, 
+            data=json.dumps(ticket_create_json),
+            verify=False, 
+            stream=False
+        )
+
+        data_json = response.json()
+    
+    s.close()
+
+    return data_json
