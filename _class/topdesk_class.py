@@ -142,7 +142,7 @@ def camposTicket(
     specification = specification[0]['specification']
 
     campos = {
-        'email_cliente': 'carlos.sousa@terceiro.rnp.br',
+        'email_cliente': 'oper@ceo.rnp.br',
         'request': """Prezados,<br/><br/> O <b>""" + specification + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
         service_desc_centreon + "<br/>status:" + service_status_centreon +
         """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
