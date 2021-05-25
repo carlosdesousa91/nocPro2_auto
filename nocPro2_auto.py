@@ -87,7 +87,9 @@ try:
         topdesk_class.normalizacao_ticket(
             nocPro_access.rule_data,
             {'hora_normaliza': hora_evento_centreon, 'processingStatus_id': 'dc36014f-d7c2-4f84-a23f-129ed93ee5d5'},
-            ticket_existente[0]
+            ticket_existente[0],
+            service_desc_centreon,
+            service_status_centreon
         )
         erro_valor = "não houve erro, ticket normalização foi atualizada. " + str(ticket_existente[0])
 

@@ -200,7 +200,9 @@ def consultaAtivo(rule_data, service_note_centreon):
 def normalizacao_ticket(
     rule_data,
     campos,
-    ticket_id
+    ticket_id,
+    service_desc_centreon,
+    service_status_centreon
     ):
 
     with requests.Session() as s:
@@ -225,8 +227,9 @@ def normalizacao_ticket(
                 {'id': campos['processingStatus_id']}
             ,
             'optionalFields1': 
-                {'date2': campos['hora_normaliza']}
-                      
+                {'date2': campos['hora_normaliza']},
+            'action': """Prezados,<br/><br/> O ativo encontra-se normalizado:<br/> Host disponível: """ + service_desc_centreon + 
+            """<br/>status:""" + service_status_centreon      
 
         }
                 
