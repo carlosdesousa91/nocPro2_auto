@@ -54,20 +54,6 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
 def cria_ticket(
     rule_data,
     campos
-    #service_desc_centreon, 
-    #service_status_centreon,
-    #hora_eventoEp_start, 
-    #hora_eventoEp_centreon, 
-    #host_name_centreon, 
-    #user_centreon, 
-    #userEmail_centreon, 
-    #hora_evento_centreon, 
-    #email_cliente,
-    #service_id_centreon, 
-    #servico_otrs, 
-    #ic_local_uf, 
-    #conexao_centreon,
-    #service_note_centreon
     ):
 
     with requests.Session() as s:
@@ -161,7 +147,7 @@ def camposTicket(
         service_desc_centreon + "<br/>status:" + service_status_centreon +
         """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
         """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
-        'briefDescription': '[teste]Abertura - Isolamento - ' + specification,
+        'briefDescription': 'Abertura - Isolamento - ' + specification,
         'category_id': '989624e9-4b7f-4bef-ab65-aa6135d52299',
         'subcategory_id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466',
         'object_name': service_note_centreon,
@@ -229,8 +215,9 @@ def normalizacao_ticket(
             'optionalFields1': 
                 {'date2': campos['hora_normaliza']}
             ,
-            'action': """Prezados,<br/><br/> O ativo encontra-se normalizado:<br/> Host disponível: """ + service_desc_centreon + 
-            """<br/>status:""" + service_status_centreon    
+            'action': """Prezados,<br/>O ativo encontra-se normalizado.<br/>Host disponível:""" + service_desc_centreon + 
+            """<br/>status:""" + service_status_centreon +
+            """<br/>O campo Hora da normalização foi atualizado"""
 
         }
                 

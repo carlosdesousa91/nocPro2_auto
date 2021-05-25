@@ -21,7 +21,7 @@ try:
     servico_otrs = sys.argv[3]
     service_id_centreon = sys.argv[4]
     hora_evento_centreon = sys.argv[5]
-    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + '-0200'
+    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + '-0300'
     service_status_centreon = sys.argv[6]
     service_desc_centreon = sys.argv[7]
     service_nome_centreon = sys.argv[8]
@@ -51,24 +51,11 @@ try:
         # criar ticket
         TicketAberto_value = topdesk_class.cria_ticket(
             nocPro_access.rule_data,
-            campos
-            #service_desc_centreon,
-            #service_status_centreon,
-            #hora_eventoEp_start,
-            #hora_eventoEp_centreon,
-            #host_name_centreon,
-            #user_centreon,
-            #userEmail_centreon,
-            #hora_evento_centreon,
-            #email_cliente,
-            #service_id_centreon,
-            #servico_otrs,
-            #ic_local_uf,
-            #conexao_centreon,
-            #service_note_centreon
+            campos    
         )
 
         erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
+        nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
 
     #não tem ticket e é uma normalização
     elif ticket_existente == 0 and (service_status_centreon == "UP" or service_status_centreon == "OK"):
@@ -96,6 +83,7 @@ try:
 
     ##envia email
     nocPro_mail.envia_email(sys.argv, erro_valor)
+ 
     ##Encerra request
     #requests.session().close()
 
