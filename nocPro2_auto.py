@@ -21,7 +21,7 @@ try:
     servico_otrs = sys.argv[3]
     service_id_centreon = sys.argv[4]
     hora_evento_centreon = sys.argv[5]
-    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + '+03'
+    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + '-0200'
     service_status_centreon = sys.argv[6]
     service_desc_centreon = sys.argv[7]
     service_nome_centreon = sys.argv[8]
