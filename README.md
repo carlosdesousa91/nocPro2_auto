@@ -27,10 +27,16 @@ rule_data = {
 
 No centreon central pela web criar o comando de notificação seguinte:
 
+Host:
+
 ```
 /usr/share/centreon/nocPro2_auto/nocPro2_auto.py "$CONTACTNAME$" "$CONTACTEMAIL$" "3641" "$HOSTID$" "$LASTHOSTCHECK$" "$HOSTSTATE$" "$HOSTALIAS$" "$HOSTALIAS$" "$HOSTNOTES$" "$LASTHOSTCHECK$" "$HOSTALIAS$" "PoP"
 ```
+Service:
 
+```
+/usr/share/centreon/nocPro2_auto/nocPro2_auto.py "$CONTACTNAME$" "$CONTACTEMAIL$" "3641" "$HOSTID$" "$LASTSERVICECHECK$" "$SERVICESTATE$" "$SERVICEDESC$" "$HOSTALIAS$" "$SERVICENOTES$" "$LASTHOSTCHECK$" "$HOSTALIAS$" "PoP"
+```
 No centreon central pela web definir o comando criado para notificação do usuário desejado.
 
 No centreon central pela web habilitar a notificação para host/service desejados.

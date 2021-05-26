@@ -143,7 +143,7 @@ def camposTicket(
 
     campos = {
         'email_cliente': 'oper@ceo.rnp.br',
-        'request': """Prezados,<br/><br/> O <b>""" + specification + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
+        'request': """Prezados,<br/><br/> O <b>""" + specification + "</b>encontra-se isolado:<br/> " + """Host indisponível: """ +
         service_desc_centreon + "<br/>status:" + service_status_centreon +
         """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
         """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
@@ -196,7 +196,7 @@ def normalizacao_ticket(
         
         base_url = 'https://'
         base_url += rule_data['address']
-        base_url += rule_data['path'] + '/api';
+        base_url += rule_data['path'] + '/api'
         base_url += '/incidents/id/' + ticket_id
         
         api_user = rule_data['username']
@@ -215,7 +215,7 @@ def normalizacao_ticket(
             'optionalFields1': 
                 {'date2': campos['hora_normaliza']}
             ,
-            'action': """Prezados,<br/>O ativo encontra-se normalizado.<br/>Host disponível:""" + service_desc_centreon + 
+            'action': """Prezados,<br/>O ativo encontra-se normalizado:""" + service_desc_centreon + 
             """<br/>status:""" + service_status_centreon +
             """<br/>O campo Hora da normalização foi atualizado"""
 
