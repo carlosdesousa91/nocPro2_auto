@@ -215,9 +215,15 @@ def normalizacao_ticket(
             'optionalFields1': 
                 {'date2': campos['hora_normaliza']}
             ,
-            'action': """Prezados,<br/>O ativo encontra-se normalizado:""" + service_desc_centreon + 
-            """<br/>status:""" + service_status_centreon +
+            'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
+            """<br/>status: """ + service_status_centreon +
             """<br/>O campo Hora da normalização foi atualizado"""
+            #"""<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%""" +
+	        #    3A14632 +
+            #    """%2C%22parentId%22%""" +
+            #    3A205 +
+            #    """%2C%22parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D'>""" +
+            #    """Conferir no centreon</a>"""
 
         }
                 

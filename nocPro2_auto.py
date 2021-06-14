@@ -55,7 +55,7 @@ try:
         )
 
         erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
-        nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
+        #nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
 
     #não tem ticket e é uma normalização
     elif ticket_existente == 0 and (service_status_centreon == "UP" or service_status_centreon == "OK"):
