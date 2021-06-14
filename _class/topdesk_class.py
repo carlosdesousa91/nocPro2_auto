@@ -219,16 +219,9 @@ def normalizacao_ticket(
             'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
             """<br/>status: """ + service_status_centreon +
             """<br/>O campo Hora da normalização foi atualizado""" +
-            """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?
-            details=%7B%22
-            id%22%3A""" + service_id_centreon + """%2C%22
-            tab%22%3A%22
-            details%22%2C%22
-            type%22%3A%22
-            host%22%2C%22
-            uuid%22%3A%22
-            h""" + service_id_centreon + """%22%7D'>
-            Conferir no centreon</a>"""
+            """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" + 
+            service_id_centreon + """%2C%22tab%22%3A%22details%22%2C%22type%22%3A%22host%22%2C%22uuid%22%3A%22h""" +
+            service_id_centreon + """%22%7D'>Conferir no centreon</a>"""
 
         }
                 
