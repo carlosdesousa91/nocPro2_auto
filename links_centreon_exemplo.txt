@@ -82,7 +82,7 @@ uuid%22%
 %7D
 
 #final
-
+#service
 https://monitoramento.rnp.br/centreon/monitoring/resources?
 details=%7B%22
 id%22%
@@ -92,3 +92,14 @@ parentId%22%
 	3A205
 %2C%22
 parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D
+
+#host
+https://monitoramento.rnp.br/centreon/monitoring/resources?
+details=%7B%22
+id%22%3A4523%2C%22
+tab%22%3A%22
+details%22%2C%22
+type%22%3A%22
+host%22%2C%22
+uuid%22%3A%22
+h4523%22%7D
