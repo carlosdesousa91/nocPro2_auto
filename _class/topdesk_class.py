@@ -151,7 +151,7 @@ def camposTicket(
         'category_id': '989624e9-4b7f-4bef-ab65-aa6135d52299',
         'subcategory_id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466',
         'object_name': service_note_centreon,
-        'sla_id': 'd5940571-9b7d-4fc7-aec5-9c5a0475c2be',
+        'sla_id': '8332bd20-15e5-4cdb-a280-5c386560c08e',
         'operator_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
         'operatorgroup_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
         'processingStatus_id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69',
