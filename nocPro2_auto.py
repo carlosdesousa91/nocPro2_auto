@@ -49,13 +49,17 @@ try:
             hora_evento_centreon
         )
         # criar ticket
-        TicketAberto_value = topdesk_class.cria_ticket(
-            nocPro_access.rule_data,
-            campos    
-        )
+        if user_centreon == "NOC Proactive":
+            TicketAberto_value = topdesk_class.cria_ticket(
+                nocPro_access.rule_data,
+                campos
+            )
 
-        erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
-        nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
+            erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
+            nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
+            
+        else:
+            erro_valor = "não necessaria abertura de ticket"
 
     #não tem ticket e é uma normalização
     elif ticket_existente == 0 and (service_status_centreon == "UP" or service_status_centreon == "OK"):
