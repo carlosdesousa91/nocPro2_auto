@@ -50,14 +50,14 @@ try:
         )
         # criar ticket
         if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
-            #TicketAberto_value = topdesk_class.cria_ticket(
-            #    nocPro_access.rule_data,
-            #    campos
-            #)
+            TicketAberto_value = topdesk_class.cria_ticket(
+                nocPro_access.rule_data,
+                campos
+            )
 
-            #erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
-            #nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
-            erro_valor = "necessaria abertura de ticket"
+            erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
+            nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
+            #erro_valor = "necessaria abertura de ticket"
 
         else:
             erro_valor = "não necessaria abertura de ticket"
