@@ -22,7 +22,11 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         base_url += '/incidents?fields=id,number,optionalFields1.date1&'
         base_url += 'object_name=' + id_relacinamento + '&'
         #estados em atendimento, abertos, retomar contato, encaminhado, Aguardando fornecedor
-        base_url += 'processing_status=2817418e-5afc-4a8e-b2e4-7e4ff104e095&processing_status=a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69&processing_status=662d4cd8-f9d7-4ba1-bcae-3569c4ccc711&processing_status=a4008966-27b6-4163-9d75-2ca5edf5c171&processing_status=dc36014f-d7c2-4f84-a23f-129ed93ee5d5'
+        base_url += """processing_status=2817418e-5afc-4a8e-b2e4-7e4ff104e095&""" +
+        """processing_status=a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69&""" +
+        #"""processing_status=662d4cd8-f9d7-4ba1-bcae-3569c4ccc711&""" +
+        """processing_status=a4008966-27b6-4163-9d75-2ca5edf5c171&""" +
+        """processing_status=dc36014f-d7c2-4f84-a23f-129ed93ee5d5"""
 
         api_user = rule_data['username']
         api_senha = rule_data['password']
