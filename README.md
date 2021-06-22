@@ -40,3 +40,8 @@ Service:
 No centreon central pela web definir o comando criado para notificação do usuário desejado.
 
 No centreon central pela web habilitar a notificação para host/service desejados.
+
+### regra de negocio
+
+- sempre que um ticket estiver com a hora de normalização null e a notificação do centreon for do tipo UP/OK ele será atualizado.
+- Se o ticket ja estiver com a hora da normalização preenchida e o status retomar contato ele não será atualizado.

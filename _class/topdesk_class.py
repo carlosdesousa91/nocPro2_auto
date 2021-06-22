@@ -24,7 +24,7 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         #estados em atendimento, abertos, retomar contato, encaminhado, Aguardando fornecedor
         base_url += "processing_status=2817418e-5afc-4a8e-b2e4-7e4ff104e095&"
         base_url += "processing_status=a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69&"
-        #base_url += """processing_status=662d4cd8-f9d7-4ba1-bcae-3569c4ccc711&"""
+        base_url += "processing_status=662d4cd8-f9d7-4ba1-bcae-3569c4ccc711&" #retomar contato
         base_url += "processing_status=a4008966-27b6-4163-9d75-2ca5edf5c171&"
         base_url += "processing_status=dc36014f-d7c2-4f84-a23f-129ed93ee5d5"
 
@@ -42,7 +42,7 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
     s.close()
     try:
         data_json = response.json()
-        return data_json[0]['id'], data_json[0]['number']
+        return data_json[0]['id'], data_json[0]['number'], data_json[0]['optionalFields1']['date2'], data_json[0]['processingStatus']['name']
     except: 
         return 0
 
@@ -242,3 +242,33 @@ def normalizacao_ticket(
     s.close()
 
     return data_json
+
+
+def ticket_atualizado(ticket_existente):
+
+    # atualizar somente se for a primeira vez
+    #if ticket_existente[4] == "Retomar contato":
+    #    if ticket_existente[3] == null:
+    #        return ticket_existente
+    #    else:
+    #        return 0
+    
+    # atualizar imediatamente
+    #else:
+    #    return ticket_existente
+
+    
+    # atualizar imediatamente
+    if ticket_existente[3] == null:
+        return ticket_existente
+
+    # atualizar somente se for a primeira vez
+    else:
+        if ticket_existente[4] == "Retomar contato":
+            return 0
+        else:
+            return ticket_existente
+
+
+
+    
