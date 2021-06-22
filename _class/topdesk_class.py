@@ -19,7 +19,7 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         base_url = 'https://'
         base_url += rule_data['address']
         base_url += rule_data['path'] + '/api';
-        base_url += '/incidents?fields=id,number,optionalFields1.date1&'
+        base_url += '/incidents?fields=id,number,optionalFields1.date2,processingStatus.name&'
         base_url += 'object_name=' + id_relacinamento + '&'
         #estados em atendimento, abertos, retomar contato, encaminhado, Aguardando fornecedor
         base_url += "processing_status=2817418e-5afc-4a8e-b2e4-7e4ff104e095&"
