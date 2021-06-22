@@ -259,12 +259,12 @@ def ticket_atualizado(ticket_existente):
 
     
     # atualizar imediatamente
-    if ticket_existente[3] is None:
+    if ticket_existente[2] is None:
         return ticket_existente
 
     # atualizar somente se for a primeira vez
     else:
-        if ticket_existente[4] == "Retomar contato":
+        if ticket_existente[3] == "Retomar contato":
             return 0
         else:
             return ticket_existente
