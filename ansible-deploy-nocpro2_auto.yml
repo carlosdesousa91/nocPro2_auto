@@ -18,7 +18,7 @@
   tasks:
       - name: " 1° Adicionando o diretorio nocPro2_auto em /usr/share/centreon/ "
         synchronize:
-            src:  /etc/ansible/dataDestino/nocPro2_auto/..
+            src:  nocPro2_auto/..
             dest: /usr/share/centreon/
             recursive: yes
             delete: yes
@@ -26,3 +26,5 @@
             group: yes
             owner: yes
             perms: yes
+            rsync_opts:
+                 - "--exclude=nocPro2_auto/.git"
