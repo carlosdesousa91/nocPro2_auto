@@ -23,8 +23,15 @@
             recursive: yes
             delete: yes
             compress: yes
-            group: yes
-            owner: yes
             perms: yes
             rsync_opts:
-                 - "--exclude=nocPro2_auto/.git"
+                 - "--exclude=.git"
+                 - "--exclude=ansible-deploy-nocpro2_auto.yml"
+                 
+      - name: " 2° Trocando o owner do diretorio e a permissao de arquivos"
+        file:
+            path: /usr/share/centreon/TESTE-ANSIBLE-JEKINS
+            group: '{{ group_app }}'
+            owner: '{{ owner_app }}'
+            mode: '0750'
+            recurse: yes
