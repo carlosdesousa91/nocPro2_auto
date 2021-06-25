@@ -15,26 +15,18 @@
   remote_user: '{{ user }}'
   become: True
   any_errors_fatal: True
-  tasks:
-      - name: " 2° Trocando o owner do diretorio e a permissao de arquivos"
-        file:
-            path: /usr/share/centreon/nocPro2_auto
-            group: '{{ group_app }}'
-            owner: '{{ owner_app }}'
-            mode: '0750'
-            recurse: yes
-            
-      - name: "3° Instalar o Python3 nos servidores"
+  tasks:            
+      - name: "1° Instalar o Python3 nos servidores versao mais recente"
         yum:
           name: python3
           state: latest
 
-      - name: " 4° Instalar  python-setuptools , pre requisito para instalar o modulo requests com pip3 request"
+      - name: " 2° Instalar  python-setuptools , pre requisito para instalar o modulo requests com pip3 request"
         package:
           name: python-setuptools
           state: present
 
-      # 5° Instalar o modulo request com pip3"
+      # 3° Instalar o modulo request com pip3"
       - pip:
           name: requests
           executable: pip3
