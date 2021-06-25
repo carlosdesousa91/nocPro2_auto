@@ -1,0 +1,41 @@
+     #######################################################################
+##
+##   nome do script yaml: ansible-deploy-nocpro2_auto.yml
+##   descricao: Este script foi feito para atualizar o nocPro2_auto nos Pops
+##   autor: marcos.rodrigues
+##   email: marcos.rodrigues@terceiro.rnp.br
+##   data de criacao: 26/06/2021.
+##   chamado de criacao/motivo: N/A  (fazer o deploy do codigo nocPro2_auto
+##   versao 1.0
+##
+##########################################################################
+
+---
+- hosts: '{{ host }}'
+  remote_user: '{{ user }}'
+  become: True
+  any_errors_fatal: True
+  tasks:
+      - name: " 2° Trocando o owner do diretorio e a permissao de arquivos"
+        file:
+            path: /usr/share/centreon/nocPro2_auto
+            group: '{{ group_app }}'
+            owner: '{{ owner_app }}'
+            mode: '0750'
+            recurse: yes
+            
+      - name: "3° Instalar o Python3 nos servidores"
+        yum:
+          name: python3
+          state: latest
+
+      - name: " 4° Instalar  python-setuptools , pre requisito para instalar o modulo requests com pip3 request"
+        package:
+          name: python-setuptools
+          state: present
+
+      # 5° Instalar o modulo request com pip3"
+      - pip:
+          name: requests
+          executable: pip3
+          state: latest
