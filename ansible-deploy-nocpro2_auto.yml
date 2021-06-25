@@ -21,7 +21,6 @@
             src:  nocPro2_auto/..
             dest: /usr/share/centreon/
             recursive: yes
-            delete: yes
             compress: yes
             perms: yes
             rsync_opts:
