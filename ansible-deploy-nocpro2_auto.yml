@@ -13,7 +13,6 @@
 ---
 - hosts: '{{ host }}'
   remote_user: '{{ user }}'
-
   become: True
   any_errors_fatal: True
   tasks:
