@@ -30,7 +30,7 @@
                  
       - name: " 2° Trocando o owner do diretorio e a permissao de arquivos"
         file:
-            path: /usr/share/centreon/TESTE-ANSIBLE-JEKINS
+            path: /usr/share/centreon/nocPro2_auto
             group: '{{ group_app }}'
             owner: '{{ owner_app }}'
             mode: '0750'
