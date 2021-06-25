@@ -1,0 +1,28 @@
+#######################################################################
+##
+##   nome do script yaml: ansible-deploy-nocpro2_auto.yml
+##   descricao: Este script foi feito para atualizar o nocPro2_auto nos Pops
+##   autor: marcos.rodrigues
+##   email: marcos.rodrigues@terceiro.rnp.br
+##   data de criacao: 25/06/2021.
+##   chamado de criacao/motivo: N/A  (fazer o deploy do codigo nocPro2_auto
+##   versao 1.0
+##
+##########################################################################
+
+---
+- hosts: '{{ host }}'
+  remote_user: '{{ user }}'
+  become: True
+  any_errors_fatal: True
+  tasks:
+      - name: " 1° Adicionando o diretorio nocPro2_auto em /usr/share/centreon/ "
+        synchronize:
+            src:  nocPro2_auto
+            dest: /usr/share/centreon/
+            recursive: yes
+            delete: yes
+            compress: yes
+            group: yes
+            owner: yes
+            perms: yes
