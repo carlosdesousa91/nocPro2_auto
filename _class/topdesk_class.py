@@ -257,9 +257,8 @@ def normalizacao_ticket(
                 """%2C%22parentId%22%3A""" +
                 service_id_centreon +
                 """%2C%22parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D'>Conferir no centreon</a>""" +
-                """<br/><a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_relatorio_mensal_de_disponibilidade?form.tokenFiltroHost=""" +
-                host_name_centreon +
-                """'>Status Report</a>"""
+                """<br/><a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_relatorio_mensal_de_disponibilidade?form.tokenFiltroHost=""" + 
+                host_name_centreon + """'>Status Report</a>"""
 
             }
                 
