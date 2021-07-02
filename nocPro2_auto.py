@@ -18,8 +18,8 @@ try:
     user_centreon = sys.argv[1]
     user_centreon = user_centreon.replace("_", " ")
     userEmail_centreon = sys.argv[2]
-    servico_otrs = sys.argv[3]
-    service_id_centreon = sys.argv[4]
+    service_id = sys.argv[3] # service id
+    service_id_centreon = sys.argv[4] #host id
     hora_evento_centreon = sys.argv[5]
     hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + '-0300'
     service_status_centreon = sys.argv[6]
@@ -87,7 +87,10 @@ try:
                 ticket_existente[0],
                 service_desc_centreon,
                 service_status_centreon,
-                service_id_centreon
+                service_id_centreon,
+                user_centreon,
+                service_id,
+                host_name_centreon
             )
             erro_valor = "ticket normalização foi atualizada. " + str(ticket_atualizado)
 

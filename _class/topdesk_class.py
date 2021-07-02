@@ -198,7 +198,10 @@ def normalizacao_ticket(
     ticket_id,
     service_desc_centreon,
     service_status_centreon,
-    service_id_centreon
+    service_id_centreon,
+    user_centreon,
+    service_id,
+    host_name_centreon
     ):
 
     with requests.Session() as s:
@@ -217,22 +220,48 @@ def normalizacao_ticket(
         authorization = authorization.decode("utf-8")
         authorization = "Basic " + str(authorization)
 
-        ticket_create_json = {
+        if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
 
-            'processingStatus': 
-                {'id': campos['processingStatus_id']}
-            ,
-            'optionalFields1': 
-                {'date2': campos['hora_normaliza']}
-            ,
-            'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
-            """<br/>status: """ + service_status_centreon +
-            """<br/>O campo Hora da normalização foi atualizado""" +
-            """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" + 
-            service_id_centreon + """%2C%22tab%22%3A%22details%22%2C%22type%22%3A%22host%22%2C%22uuid%22%3A%22h""" +
-            service_id_centreon + """%22%7D'>Conferir no centreon</a>"""
+            ticket_create_json = {
 
-        }
+                'processingStatus': 
+                    {'id': campos['processingStatus_id']}
+                ,
+                'optionalFields1': 
+                    {'date2': campos['hora_normaliza']}
+                ,
+                'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
+                """<br/>status: """ + service_status_centreon +
+                """<br/>O campo Hora da normalização foi atualizado""" +
+                """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
+                service_id_centreon + """%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22host%22%2C%22uuid%22%3A%22h""" +
+                service_id_centreon + """%22%7D'>Conferir no centreon</a>"""
+
+            }
+
+        else:
+
+            ticket_create_json = {
+
+                'processingStatus': 
+                    {'id': campos['processingStatus_id']}
+                ,
+                'optionalFields1': 
+                    {'date2': campos['hora_normaliza']}
+                ,
+                'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
+                """<br/>status: """ + service_status_centreon +
+                """<br/>O campo Hora da normalização foi atualizado""" +
+                """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
+                service_id +
+                """%2C%22parentId%22%3A""" +
+                service_id_centreon +
+                """%2C%22parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D'>Conferir no centreon</a>""" +
+                """<br/><a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_relatorio_mensal_de_disponibilidade?form.tokenFiltroHost=""" +
+                host_name_centreon +
+                """'>Status Report</a>"""
+
+            }
                 
         response = s.put(
             base_url, 
