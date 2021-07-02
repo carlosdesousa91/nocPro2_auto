@@ -46,3 +46,4 @@ No centreon central pela web habilitar a notificação para host/service desejad
 - sempre que um ticket estiver com a hora de normalização null e a notificação do centreon for do tipo UP/OK ele será atualizado.
 - Se o ticket ja estiver com a hora da normalização preenchida e com status "retomar contato" ele não será atualizado.
 - Ticket com o Status "retomar contato" somente será atualizado se a hora da normalização estiver Null.
+- O campo Registro do chamado deve estar preenchido com "Monitoramento"

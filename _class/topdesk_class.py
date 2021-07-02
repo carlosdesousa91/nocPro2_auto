@@ -19,14 +19,19 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         base_url = 'https://'
         base_url += rule_data['address']
         base_url += rule_data['path'] + '/api'
-        base_url += '/incidents?fields=id,number,optionalFields1.date1,optionalFields1.date2,processingStatus.name&'
-        base_url += 'object_name=' + id_relacinamento + '&'
+        #base_url += '/incidents?fields=id,number,optionalFields1.date1,optionalFields1.date2,processingStatus.name&'
+        #base_url += 'object_name=' + id_relacinamento + '&'
         #estados em atendimento, abertos, retomar contato, encaminhado, Aguardando fornecedor
-        base_url += "processing_status=2817418e-5afc-4a8e-b2e4-7e4ff104e095&"
-        base_url += "processing_status=a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69&"
-        base_url += "processing_status=662d4cd8-f9d7-4ba1-bcae-3569c4ccc711&" #retomar contato
-        base_url += "processing_status=a4008966-27b6-4163-9d75-2ca5edf5c171&"
-        base_url += "processing_status=dc36014f-d7c2-4f84-a23f-129ed93ee5d5"
+        #base_url += "processing_status=2817418e-5afc-4a8e-b2e4-7e4ff104e095&"
+        #base_url += "processing_status=a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69&"
+        #base_url += "processing_status=662d4cd8-f9d7-4ba1-bcae-3569c4ccc711&" #retomar contato
+        #base_url += "processing_status=a4008966-27b6-4163-9d75-2ca5edf5c171&"
+        #base_url += "processing_status=dc36014f-d7c2-4f84-a23f-129ed93ee5d5"
+
+        base_url += "/incidents?fields=id,number,optionalFields1.date1,optionalFields1.date2,processingStatus.name&"
+        base_url += "query=entryType.name==Monitoramento;"
+        base_url += "object.name==" + id_relacinamento + ";"
+        base_url += "processingStatus.name=in=('Em atendimento',Aberto,'Retomar contato',Encaminhado,'Aguardando fornecedor')"
 
         api_user = rule_data['username']
         api_senha = rule_data['password']
