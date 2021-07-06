@@ -48,7 +48,7 @@ try:
             userEmail_centreon,
             hora_evento_centreon
         )
-        # criar ticket
+        # criar ticket isolamento
         if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
             TicketAberto_value = topdesk_class.cria_ticket(
                 nocPro_access.rule_data,
@@ -58,6 +58,16 @@ try:
             erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
             nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
             #erro_valor = "necessaria abertura de ticket"
+
+        # criar ticket padrão
+        elif (user_centreon == "NOC Proactive Problem" or user_centreon == "NOC_Proactive_ Problem"):
+            TicketAberto_value = topdesk_class.cria_ticket(
+                nocPro_access.rule_data,
+                campos
+            )
+
+            erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
+            nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
 
         else:
             erro_valor = "não necessaria abertura de ticket"
