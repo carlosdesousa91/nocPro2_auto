@@ -31,7 +31,7 @@ try:
     host_name_centreon = sys.argv[11]
     conexao_centreon = sys.argv[12]
 
-    id_relacinamento = verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_centreon)
+    id_relacinamento = topdesk_class.verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_centreon)
     #params = otrs_class.testa_sessao();
     verifica_ticket = topdesk_class.verificaTicket(id_relacinamento, hora_evento_centreon, nocPro_access.rule_data)
     #print(verifica_ticket)
