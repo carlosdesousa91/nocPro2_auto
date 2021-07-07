@@ -177,7 +177,7 @@ def camposTicket(
         service_note_centreon = "CENTREON_" + service_id_centreon + "_" + service_id
 
         campos = {
-            'email_cliente': 'carlos.sousa@terceiro.rnp.br',
+            'email_cliente': 'oper@ceo.rnp.br',
             'request': """Prezados,<br/><br/> O """ + service_desc_centreon + " encontra-se indisponível.""" +
             "<br/>status: " + service_status_centreon +
             """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
@@ -192,6 +192,9 @@ def camposTicket(
             'processingStatus_id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69',
             'hora_falha': hora_evento_centreon
         }
+
+    else:
+        campos = "não necessaria abertura de ticket"
 
     return campos
 
