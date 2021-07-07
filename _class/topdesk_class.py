@@ -246,7 +246,10 @@ def normalizacao_ticket(
         authorization = authorization.decode("utf-8")
         authorization = "Basic " + str(authorization)
 
-        if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
+        if (
+            user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive" or 
+            user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"
+           ):
 
             ticket_create_json = {
 
@@ -330,6 +333,9 @@ def ticket_atualizado(ticket_existente):
         else:
             return ticket_existente
 
-
-
+def verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_centreon):
+    if(user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
+        return "CENTREON_" + service_id_centreon + "_" + service_id
+    else:
+        return service_note_centreon
     
