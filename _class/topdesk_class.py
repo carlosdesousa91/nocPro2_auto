@@ -144,7 +144,9 @@ def camposTicket(
         service_desc_centreon,
         user_centreon,
         userEmail_centreon,
-        hora_evento_centreon
+        hora_evento_centreon,
+        service_id, #service id
+        service_id_centreon #host id
     ):
     if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
 
@@ -168,23 +170,23 @@ def camposTicket(
             'hora_falha': hora_evento_centreon
         }
 
-    elif (user_centreon == "NOC Proactive Problem" or user_centreon == "NOC_Proactive_Problem"):
+    elif (user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
 
         #specification = consultaAtivo(rule_data, service_note_centreon)
         #specification = specification[0]['specification']
-        service_note_centreon = None
+        service_note_centreon = "CENTREON_" + service_id_centreon + "_" + service_id
 
         campos = {
             'email_cliente': 'carlos.sousa@terceiro.rnp.br',
-            'request': """Prezados,<br/><br/> O """ + service_desc_centreon + "encontra-se indisponível.""" +
-            "<br/>status:" + service_status_centreon +
+            'request': """Prezados,<br/><br/> O """ + service_desc_centreon + " encontra-se indisponível.""" +
+            "<br/>status: " + service_status_centreon +
             """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
             """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
             'briefDescription': 'Abertura - ' + service_desc_centreon,
             'category_id': '989624e9-4b7f-4bef-ab65-aa6135d52299',
             'subcategory_id': 'a0a77087-9029-4dcd-a8ab-13a40c8df466',
             'object_name': service_note_centreon,
-            'sla_id': '8332bd20-15e5-4cdb-a280-5c386560c08e',
+            'sla_id': '89ca953a-5643-4a63-b2ef-46434e0fa2b4',
             'operator_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
             'operatorgroup_id': 'dc32c755-d276-4d71-a8ed-4ffd1c3f1176',
             'processingStatus_id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69',

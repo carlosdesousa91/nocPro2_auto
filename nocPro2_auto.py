@@ -46,7 +46,9 @@ try:
             service_desc_centreon,
             user_centreon,
             userEmail_centreon,
-            hora_evento_centreon
+            hora_evento_centreon,
+            service_id, #service id
+            service_id_centreon #host id
         )
         # criar ticket isolamento
         if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
@@ -60,7 +62,7 @@ try:
             #erro_valor = "necessaria abertura de ticket"
 
         # criar ticket padrão
-        elif (user_centreon == "NOC Proactive Problem" or user_centreon == "NOC_Proactive_ Problem"):
+        elif (user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
             TicketAberto_value = topdesk_class.cria_ticket(
                 nocPro_access.rule_data,
                 campos
