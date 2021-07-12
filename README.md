@@ -47,3 +47,7 @@ No centreon central pela web habilitar a notificação para host/service desejad
 - Se o ticket ja estiver com a hora da normalização preenchida e com status "retomar contato" ele não será atualizado.
 - Ticket com o Status "retomar contato" somente será atualizado se a hora da normalização estiver Null.
 - O campo Registro do chamado deve estar preenchido com "Monitoramento".
+
+### RN002 - MPLS não possuem Ics cadastrados no centreon
+
+- O IC é "montado" usando a seguinte estrutura : "CENTREON_" + host_id + "_" + service_id 

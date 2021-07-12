@@ -192,7 +192,7 @@ def camposTicket(
             'processingStatus_id': 'a3e2ad64-16e2-4fe3-9c66-9e50ad9c4d69',
             'hora_falha': hora_evento_centreon
         }
-
+    #refatorar
     else:
         campos = "não necessaria abertura de ticket"
 
@@ -250,8 +250,7 @@ def normalizacao_ticket(
         authorization = "Basic " + str(authorization)
 
         if (
-            user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive" or 
-            user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"
+                user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"
            ):
 
             ticket_create_json = {
@@ -268,6 +267,34 @@ def normalizacao_ticket(
                 """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
                 service_id_centreon + """%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22host%22%2C%22uuid%22%3A%22h""" +
                 service_id_centreon + """%22%7D'>Conferir no centreon</a>"""
+
+            }
+
+        elif (
+                user_centreon == "NOC Proactive Backbone" or user_centreon == "NOC_Proactive_Backbone" or 
+                user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"
+            ):
+
+            ticket_create_json = {
+
+                'processingStatus': 
+                    {'id': campos['processingStatus_id']}
+                ,
+                'optionalFields1': 
+                    {'date2': campos['hora_normaliza']}
+                ,
+                'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
+                """<br/>status: """ + service_status_centreon +
+                """<br/>O campo Hora da normalização foi atualizado""" +
+                """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
+                service_id +
+                """%2C%22parentId%22%3A""" +
+                service_id_centreon +
+                """%2C%22parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D'>Conferir no centreon</a>""" +
+                """ | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/backbone_relatorio_mensal_de_disponibilidade?form.tokenFiltroHost=""" + 
+                host_name_centreon + """'>Relatório de disponiblidade</a>"""
+                #""" | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_disponibilidade'>Planilha padrão de penalidades</a>""" +
+                #""" | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_statusreport'>Status report do PoP</a>"""
 
             }
 

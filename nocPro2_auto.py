@@ -62,7 +62,7 @@ try:
             nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
             #erro_valor = "necessaria abertura de ticket"
 
-        # criar ticket padrão
+        # criar ticket MPLS
         elif (user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
             TicketAberto_value = topdesk_class.cria_ticket(
                 nocPro_access.rule_data,
