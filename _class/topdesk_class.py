@@ -364,6 +364,10 @@ def ticket_atualizado(ticket_existente):
             return ticket_existente
 
 def verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_centreon):
+
+    if '::' in service_note_centreon:
+        service_note_centreon = service_note_centreon.split("::", 1)
+        
     if(user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
         return "CENTREON_" + service_id_centreon + "_" + service_id
     else:
