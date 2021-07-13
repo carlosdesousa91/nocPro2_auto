@@ -268,7 +268,10 @@ def normalizacao_ticket(
                 """<br/>O campo Hora da normalização foi atualizado""" +
                 """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
                 service_id_centreon + """%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22host%22%2C%22uuid%22%3A%22h""" +
-                service_id_centreon + """%22%7D'>Conferir no centreon</a>"""
+                service_id_centreon + """%22%7D'>Conferir no centreon</a>""" +
+                """ | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/relatorio_mensal_de_disponibilidade_dos_pops?form.tokenFiltroHost=""" + 
+                host_name_centreon + """'>Relatório de disponiblidade</a>"""
+
 
             }
 
