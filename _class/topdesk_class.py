@@ -146,7 +146,8 @@ def camposTicket(
         userEmail_centreon,
         hora_evento_centreon,
         service_id, #service id
-        service_id_centreon #host id
+        service_id_centreon, #host id
+        ativo_output
     ):
     if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
 
@@ -155,8 +156,8 @@ def camposTicket(
 
         campos = {
             'email_cliente': 'oper@ceo.rnp.br',
-            'request': """Prezados,<br/><br/> O <b>""" + specification + "</b>encontra-se isolado:<br/> " + """Host indisponível: """ +
-            service_desc_centreon + "<br/>status:" + service_status_centreon +
+            'request': """Prezados,<br/><br/> O <b>""" + specification + "</b> encontra-se isolado:<br/> " + """Host indisponível: """ +
+            service_desc_centreon + "<br/>status/Output: " + service_status_centreon + " - " + ativo_output +
             """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
             """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
             'briefDescription': 'Abertura - Isolamento - ' + specification,
@@ -179,7 +180,7 @@ def camposTicket(
         campos = {
             'email_cliente': 'oper@ceo.rnp.br',
             'request': """Prezados,<br/><br/> O """ + service_desc_centreon + " encontra-se indisponível.""" +
-            "<br/>status: " + service_status_centreon +
+            "<br/>status/Output: " + service_status_centreon + " - " + ativo_output +
             """<br/><br/><b>Atenciosamente,</b><br/>""" + user_centreon + "<br/>" + userEmail_centreon +
             """<br/>RNP – Rede Nacional de Ensino e Pesquisa<br/>https://www.rnp.br""" ,
             'briefDescription': 'Abertura - ' + service_desc_centreon,
@@ -230,7 +231,8 @@ def normalizacao_ticket(
     service_id_centreon,
     user_centreon,
     service_id,
-    host_name_centreon
+    host_name_centreon,
+    ativo_output
     ):
 
     with requests.Session() as s:
@@ -262,7 +264,7 @@ def normalizacao_ticket(
                     {'date2': campos['hora_normaliza']}
                 ,
                 'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
-                """<br/>status: """ + service_status_centreon +
+                "<br/>status/Output: " + service_status_centreon + " - " + ativo_output +
                 """<br/>O campo Hora da normalização foi atualizado""" +
                 """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
                 service_id_centreon + """%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22host%22%2C%22uuid%22%3A%22h""" +
@@ -284,7 +286,7 @@ def normalizacao_ticket(
                     {'date2': campos['hora_normaliza']}
                 ,
                 'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
-                """<br/>status: """ + service_status_centreon +
+                "<br/>status/Output: " + service_status_centreon + " - " + ativo_output +
                 """<br/>O campo Hora da normalização foi atualizado""" +
                 """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
                 service_id +
@@ -309,7 +311,7 @@ def normalizacao_ticket(
                     {'date2': campos['hora_normaliza']}
                 ,
                 'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
-                """<br/>status: """ + service_status_centreon +
+                "<br/>status/Output: " + service_status_centreon + " - " + ativo_output +
                 """<br/>O campo Hora da normalização foi atualizado""" +
                 """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
                 service_id +

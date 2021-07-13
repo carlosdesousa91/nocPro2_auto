@@ -30,6 +30,7 @@ try:
     hora_eventoEp_start = int(hora_eventoEp_centreon) - 10800
     host_name_centreon = sys.argv[11]
     conexao_centreon = sys.argv[12]
+    ativo_output = sys.argv[13]
 
     id_relacinamento = topdesk_class.verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_centreon)
     #params = otrs_class.testa_sessao();
@@ -49,7 +50,8 @@ try:
             userEmail_centreon,
             hora_evento_centreon,
             service_id, #service id
-            service_id_centreon #host id
+            service_id_centreon, #host id
+            ativo_output
         )
         # criar ticket isolamento
         if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
@@ -103,7 +105,8 @@ try:
                 service_id_centreon,
                 user_centreon,
                 service_id,
-                host_name_centreon
+                host_name_centreon,
+                ativo_output
             )
             erro_valor = "ticket normalização foi atualizada. " + str(ticket_atualizado)
 
