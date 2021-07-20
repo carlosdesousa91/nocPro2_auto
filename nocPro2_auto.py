@@ -66,14 +66,16 @@ try:
 
         # criar ticket MPLS
         elif (user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
-            TicketAberto_value = topdesk_class.cria_ticket(
+            """TicketAberto_value = topdesk_class.cria_ticket(
                 nocPro_access.rule_data,
                 campos
             )
 
             erro_valor = "não houve erro, ticket foi aberto."  + str(TicketAberto_value)
-            nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])
+            nocPro_mail.envia_email_equipe_noc(sys.argv, erro_valor, TicketAberto_value['number'])"""
 
+            erro_valor = "não necessaria abertura de ticket"
+            
         else:
             erro_valor = "não necessaria abertura de ticket"
 

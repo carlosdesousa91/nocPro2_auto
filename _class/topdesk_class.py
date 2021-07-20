@@ -303,6 +303,33 @@ def normalizacao_ticket(
 
             }
 
+        elif (
+                user_centreon == "NOC Proactive Centreon Servers" or user_centreon == "NOC_Proactive_Centreon_Servers"
+            ):
+
+            ticket_create_json = {
+
+                'processingStatus': 
+                    {'id': campos['processingStatus_id']}
+                ,
+                'optionalFields1': 
+                    {'date2': campos['hora_normaliza']}
+                ,
+                'action': """Prezados,<br/>O ativo encontra-se normalizado: """ + service_desc_centreon + 
+                "<br/>status/Output: " + service_status_centreon + " - " + ativo_output +
+                """<br/>O campo Hora da normalização foi atualizado""" +
+                """<br/><a href='https://monitoramento.rnp.br/centreon/monitoring/resources?details=%7B%22id%22%3A""" +
+                service_id +
+                """%2C%22parentId%22%3A""" +
+                service_id_centreon +
+                """%2C%22parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D'>Conferir no centreon</a>""" +
+                """ | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/serv_avancados_statusreport?form.tokenFiltroHost=""" + 
+                host_name_centreon + """'>Relatório de disponiblidade</a>"""
+                #""" | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_disponibilidade'>Planilha padrão de penalidades</a>""" +
+                #""" | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_statusreport'>Status report do PoP</a>"""
+
+            }
+
         else:
 
             ticket_create_json = {
@@ -367,6 +394,7 @@ def ticket_atualizado(ticket_existente):
             return 0
         else:
             return ticket_existente
+
 
 def verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_centreon):
 
