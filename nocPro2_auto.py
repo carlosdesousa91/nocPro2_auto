@@ -21,7 +21,7 @@ try:
     service_id = sys.argv[3] # service id
     service_id_centreon = sys.argv[4] #host id
     hora_evento_centreon = sys.argv[5]
-    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + '-0300'
+    hora_evento_centreon = datetime.datetime.fromtimestamp(int(hora_evento_centreon)).strftime('%Y-%m-%dT%H:%M:%S.000') + nocPro_access.poller['fuzohorario']
     service_status_centreon = sys.argv[6]
     service_desc_centreon = sys.argv[7]
     service_nome_centreon = sys.argv[8]
