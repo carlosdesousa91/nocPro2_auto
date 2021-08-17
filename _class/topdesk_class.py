@@ -402,7 +402,12 @@ def verificaTipoIc(user_centreon, service_id_centreon, service_id, service_note_
         service_note_centreon = service_note_centreon.split("::")
         service_note_centreon = service_note_centreon[1]
 
-    if(user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"):
+    if(
+        user_centreon == "NOC Proactive MPLS" or
+        user_centreon == "NOC_Proactive_MPLS" or
+        service_note_centreon is None or
+        service_note_centreon == ""
+    ):
         return "CENTREON_" + service_id_centreon + "_" + service_id
     else:
         return service_note_centreon
