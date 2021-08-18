@@ -31,7 +31,7 @@ def verificaTicket(id_relacinamento, horadafalha, rule_data):
         base_url += "/incidents?fields=id,number,optionalFields1.date1,optionalFields1.date2,processingStatus.name&"
         base_url += "query=entryType.name==Monitoramento;"
         base_url += "object.name==" + id_relacinamento + ";"
-        base_url += "processingStatus.name=in=('Em atendimento',Aberto,'Retomar contato',Encaminhado,'Aguardando fornecedor')"
+        base_url += "processingStatus.name=in=('Em atendimento',Aberto,'Retomar contato',Encaminhado,'Aguardando fornecedor','Aguardando solicitante')"
 
         api_user = rule_data['username']
         api_senha = rule_data['password']
