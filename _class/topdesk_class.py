@@ -280,6 +280,10 @@ def normalizacao_ticket(
                 user_centreon == "NOC Proactive MPLS" or user_centreon == "NOC_Proactive_MPLS"
             ):
 
+            #ajusta espaços
+            service_desc_centreon_url = service_desc_centreon.replace(" ", "%20")
+            service_desc_centreon_url = service_desc_centreon_url.replace("/", "%2F")
+
             ticket_create_json = {
 
                 'processingStatus': 
@@ -297,7 +301,7 @@ def normalizacao_ticket(
                 service_id_centreon +
                 """%2C%22parentType%22%3A%22host%22%2C%22tab%22%3A%22timeline%22%2C%22type%22%3A%22service%22%2C%22uuid%22%3A%22%22%7D'>Conferir no centreon</a>""" +
                 """ | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/backbone_relatorio_mensal_de_disponibilidade?form.tokenFiltroHost=""" + 
-                host_name_centreon + """'>Relatório de disponiblidade</a>"""
+                service_desc_centreon_url + """'>Relatório de disponiblidade</a>"""
                 #""" | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_disponibilidade'>Planilha padrão de penalidades</a>""" +
                 #""" | <a href='https://operacao.rnp.br:8000/en-US/app/DISPONIBILIDADE_QUALIDADE_CONSUMO_TIC/ultima_milha_statusreport'>Status report do PoP</a>"""
 
