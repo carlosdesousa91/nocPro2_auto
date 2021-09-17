@@ -112,6 +112,11 @@ try:
             )
             erro_valor = "ticket normalização foi atualizada. " + str(ticket_atualizado)
 
+            #envia e-mail normalização
+            if (user_centreon == "NOC Proactive" or user_centreon == "NOC_Proactive"):
+                nocPro_mail.envia_email_normalizacao(sys.argv, erro_valor, ticket_existente[1])
+
+
     ##envia email
     nocPro_mail.envia_email(sys.argv, erro_valor)
  

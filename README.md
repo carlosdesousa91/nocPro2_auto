@@ -51,3 +51,7 @@ No centreon central pela web habilitar a notificação para host/service desejad
 ### RN002 - Ativos que não possuem Ics cadastrados no centreon
 
 - O IC é "montado" usando a seguinte estrutura : "CENTREON_" + host_id + "_" + service_id 
+
+### RN003 - Envio e-mail normalização
+
+- incluir metodo de envio de email no arquivo nocPro_mail.py
